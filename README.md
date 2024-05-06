@@ -1,4 +1,5 @@
-## Pixiv Daily
+*Code edited by Lemon_miaow , original: https://github.com/gxywy/pixiv-daily*
+## Pixiv Daily 
 Update: 2024-05-06
 |      |      |      |
 | :----: | :----: | :----: |
