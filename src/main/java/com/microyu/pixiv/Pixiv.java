@@ -27,7 +27,7 @@ public class Pixiv {
 
             // 图片地址
             String originUrl = (String) jsonObject.get("url");
-            String smallUrl = originUrl.replace("i.pximg.net", "pixiv.microyu.workers.dev");
+            String smallUrl = originUrl.replace("i.pximg.net", "pximg.lemonmiaow.xyz");
             String bigUrl = smallUrl.replace("/c/240x480/img-master/", "/img-original/").replace("_master1200", "");
             System.out.println(bigUrl);
 

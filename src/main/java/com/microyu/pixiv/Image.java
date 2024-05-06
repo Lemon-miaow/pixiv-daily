@@ -1,5 +1,7 @@
 package com.microyu.pixiv;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Objects;
 
 public class Image {
@@ -14,7 +16,30 @@ public class Image {
 
     @Override
     public String toString() {
-        return String.format("![](%s) **#%s** [%s](%s) download: [JPG](%s) [PNG](%s)", smallUrl, rank, title, pageUrl, bigUrlJPG, bigUrlPNG);
+        try {
+            Thread.sleep(3000);
+            URL url = new URL(bigUrlJPG);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
+
+            int responseCode = connection.getResponseCode();
+            connection.disconnect();
+
+            if (responseCode == 200) {
+                bigUrlPNG = "";
+                return String.format("![](%s) **#%s** [%s](%s) download: [JPG](%s)", smallUrl, rank, title, pageUrl, bigUrlJPG);
+            } else if (responseCode == 404) {
+                bigUrlJPG = "";
+                return String.format("![](%s) **#%s** [%s](%s) download: [PNG](%s)", smallUrl, rank, title, pageUrl, bigUrlPNG);
+            } else {
+                return String.format("![](%s) **#%s** [%s](%s) download: [JPG](%s) [PNG](%s)", smallUrl, rank, title, pageUrl, bigUrlJPG, bigUrlPNG);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return String.format("ERROR", e.getMessage());
+        }
+//        return String.format("![](%s) **#%s** [%s](%s) download: [JPG](%s) [PNG](%s)", smallUrl, rank, title, pageUrl, bigUrlJPG, bigUrlPNG);
     }
 
     public String getTitle() {
