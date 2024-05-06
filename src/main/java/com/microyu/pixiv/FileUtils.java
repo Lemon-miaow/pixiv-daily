@@ -24,8 +24,9 @@ public class FileUtils {
             Files.createFile(readmePath);
         }
         //List<String> allLines = Files.readAllLines(path);
-        Files.write(readmePath, "original: https://github.com/gxywy/pixiv-daily".getBytes());
-        Files.write(readmePath, "## Pixiv Daily".getBytes());
+        Files.write(readmePath, "*Code edited by Lemon_miaow , original: https://github.com/gxywy/pixiv-daily*".getBytes());
+        Files.write(readmePath, System.lineSeparator().getBytes(), StandardOpenOption.APPEND);
+        Files.write(readmePath, "## Pixiv Daily ".getBytes(), StandardOpenOption.APPEND);
         Files.write(readmePath, System.lineSeparator().getBytes(), StandardOpenOption.APPEND);
         Files.write(readmePath, ("Update: " + new SimpleDateFormat("yyyy-MM-dd").format(new Date())).getBytes(), StandardOpenOption.APPEND);
         Files.write(readmePath, System.lineSeparator().getBytes(), StandardOpenOption.APPEND);

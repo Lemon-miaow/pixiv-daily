@@ -17,7 +17,7 @@ public class Image {
     @Override
     public String toString() {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(5000);
             URL url = new URL(bigUrlJPG);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
@@ -37,7 +37,7 @@ public class Image {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return String.format("ERROR", e.getMessage());
+            return String.format("![](%s) **#%s** [%s](%s) download: [JPG](%s) [PNG](%s)", smallUrl, rank, title, pageUrl, bigUrlJPG, bigUrlPNG);
         }
 //        return String.format("![](%s) **#%s** [%s](%s) download: [JPG](%s) [PNG](%s)", smallUrl, rank, title, pageUrl, bigUrlJPG, bigUrlPNG);
     }
